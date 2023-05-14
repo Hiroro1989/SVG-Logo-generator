@@ -39,10 +39,32 @@ inquirer.prompt([
     ]
   },
 ])
-.then((answer) =>{
-    const newShape = new shapeSVG.ShapeEx(answer).logo;
+.then((res) =>{
+  switch(res){
+    case "circle":
+      const logoCircle = new shapeSVG.Circle(characters, textColor, shapeColor);
+      fs.writeFile("./examples/logo.svg", logoCircle, (err) =>
+      err ? console.log(err) : console.log("Successfully created SVG!")
+    );
+      break;
 
-      fs.writeFile("./examples/logo.svg", newShape, (err) =>
-        err ? console.log(err) : console.log("Successfully created SVG!")
-      );
+    case "triangle":
+      const logoTriangle = new shapeSVG.Triangle(characters, textColor, shapeColor);
+      fs.writeFile("./examples/logo.svg", logoTriangle, (err) =>
+      err ? console.log(err) : console.log("Successfully created SVG!")
+    );
+      break;
+
+    case "square":
+      const logoSquare = new shapeSVG.Square(characters, textColor, shapeColor);
+      fs.writeFile("./examples/logo.svg", logoSquare, (err) =>
+      err ? console.log(err) : console.log("Successfully created SVG!")
+    );
+      break;
+  }
+  
+
+      // fs.writeFile("./examples/logo.svg", newShape, (err) =>
+      //   err ? console.log(err) : console.log("Successfully created SVG!")
+      // );
 })
