@@ -22,21 +22,27 @@ inquirer.prompt([
       "Which font color do you want? (input a color keyword or a hexadecimal number)",
   },
   {
+    type: "input",
+    name: "shapeColor",
+    message:
+      "Which shape color do you want? (input a color keyword or a hexadecimal number)",
+  },
+  {
     type: "list",
     name: "shape",
     message:
       "Which shapes do you want?",
-    choice: [
+    choices: [
         "circle",
         "triangle",
         "square",
-    ],
+    ]
   },
 ])
-.then((answers) =>{
-    // const svgContent = shapeSVG.generateSVG(answers);
+.then((answer) =>{
+    const newShape = new shapeSVG.ShapeEx(answer).logo;
 
-    //   fs.writeFile("./examples/1.svg", svgContent, (err) =>
-    //     err ? console.log(err) : console.log("Successfully created SVG!")
-    //   );
+      fs.writeFile("./examples/logo.svg", newShape, (err) =>
+        err ? console.log(err) : console.log("Successfully created SVG!")
+      );
 })
