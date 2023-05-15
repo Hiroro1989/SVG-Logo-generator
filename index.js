@@ -40,24 +40,24 @@ inquirer.prompt([
   },
 ])
 .then((res) =>{
-  switch(res){
+  switch(res.shape){
     case "circle":
-      const logoCircle = new shapeSVG.Circle(characters, textColor, shapeColor);
-      fs.writeFile("./examples/logo.svg", logoCircle, (err) =>
+      const logoCircle = new shapeSVG.Circle(res.characters, res.textColor, res.shapeColor);
+      fs.writeFile("./examples/logo.svg", logoCircle.logo, (err) =>
       err ? console.log(err) : console.log("Successfully created SVG!")
     );
       break;
 
     case "triangle":
-      const logoTriangle = new shapeSVG.Triangle(characters, textColor, shapeColor);
-      fs.writeFile("./examples/logo.svg", logoTriangle, (err) =>
+      const logoTriangle = new shapeSVG.Triangle(res.characters, res.textColor, res.shapeColor);
+      fs.writeFile("./examples/logo.svg", logoTriangle.logo, (err) =>
       err ? console.log(err) : console.log("Successfully created SVG!")
     );
       break;
 
     case "square":
-      const logoSquare = new shapeSVG.Square(characters, textColor, shapeColor);
-      fs.writeFile("./examples/logo.svg", logoSquare, (err) =>
+      const logoSquare = new shapeSVG.Square(res.characters, res.textColor, res.shapeColor);
+      fs.writeFile("./examples/logo.svg", logoSquare.logo, (err) =>
       err ? console.log(err) : console.log("Successfully created SVG!")
     );
       break;
